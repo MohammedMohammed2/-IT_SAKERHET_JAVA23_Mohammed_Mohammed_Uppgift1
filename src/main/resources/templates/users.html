@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+
+<div class="col-sm-5">
+  <div class="panel-body"  >
+    <table class="table">
+      <tr>
+        <th>User ID</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Adress</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Delete</th>
+      </tr>
+      <tbody>
+      <tr  th:each="user : ${usersList}">
+        <td th:text="${user.id}">User ID</td>
+        <td th:text="${user.firstname}">Firstname</td>
+        <td th:text="${user.lastname}">Lastname</td>
+        <td th:text="${user.adress}">Adress</td>
+        <td th:text="${user.password}">Password</td>
+        <td th:text="${user.email}">Email</td>
+        <td>
+          <a th:href="@{'/delete/' + ${user.id}}">Delete</a>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+    </div>
+  </div>
+</html>
