@@ -50,9 +50,10 @@ public class UserController {
     }
 
 
-    @GetMapping("/getUserByFname/{firstname}")
-    public ResponseEntity<User> getUserByFname(@PathVariable String firstname) {
+    @GetMapping("/getUserByFname")
+    public ResponseEntity<User> getUserByFname(String firstname,Model model) {
         Optional<User> desitredUser = userRepository.findByfirstname(firstname);
+        model.addAttribute("desiredUser", desitredUser);
         if (desitredUser.isPresent()) {
             return new ResponseEntity<>(desitredUser.get(), HttpStatus.OK);
         } else {

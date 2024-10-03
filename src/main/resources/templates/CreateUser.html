@@ -7,11 +7,11 @@
 <body>
 <div>
     <form action="#" th:action="@{/CreateUser}" th:object = "${user}" method="POST">
-        <input type="text" th:field = "*{firstname}" placeholder="first name"> <br>
-        <input type="text" th:field = "*{lastname}" placeholder="lastname"><br>
-        <input type="email" th:field = "*{email}" placeholder="email"><br>
-        <input type="password" th:field = "*{password}" placeholder="password"><br>
-        <input type="text" th:field = "*{adress}" placeholder="adress"><br>
+        <input type="text" th:field = "*{firstname}" placeholder="first name" required> <br>
+        <input type="text" th:field = "*{lastname}" placeholder="lastname" required><br>
+        <input type="email" th:field = "*{email}" placeholder="email" required><br>
+        <input type="password" th:field = "*{password}" placeholder="password" required><br>
+        <input type="text" th:field = "*{adress}" placeholder="adress" required><br>
 
         <button type="submit">Create</button><br>
     </form>
