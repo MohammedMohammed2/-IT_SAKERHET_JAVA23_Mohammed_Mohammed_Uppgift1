@@ -23,6 +23,7 @@ public class UserController {
     private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
 
+
     public UserController(UserRepository userRepository){
         this.userRepository = userRepository;
     }
@@ -51,14 +52,10 @@ public class UserController {
 
 
     @GetMapping("/getUserByFname")
-    public ResponseEntity<User> getUserByFname(String firstname,Model model) {
-        Optional<User> desitredUser = userRepository.findByfirstname(firstname);
-        model.addAttribute("desiredUser", desitredUser);
-        if (desitredUser.isPresent()) {
-            return new ResponseEntity<>(desitredUser.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public String getUserByFname(@RequestParam(name = "firstname") String firstname,Model model) {
+        List<User> usersList  = userRepository.findByfirstname(firstname);
+        model.addAttribute("usersList", usersList);
+    return "users";
     }
     @RequestMapping("/delete/{id}")
     public String deletestudent(@PathVariable(name = "id") int id) {
